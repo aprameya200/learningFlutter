@@ -7,7 +7,6 @@ class HomePage extends StatelessWidget {
         //has head , body and footer
         appBar: AppBar(
           title: Text("Catologue App"),
-          backgroundColor: Colors.red,
         ),
         body: Center(
             //main body of app

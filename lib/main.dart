@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:learningdart/home_page.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:learningdart/pages/home_page.dart';
+import 'package:learningdart/pages/login_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,10 +16,21 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     int days = 30;
 
-    // HomePage h = new HomePage();
+    HomePage homePage = new HomePage();
 
     return MaterialApp(
-      home: HomePage(),
+      //home: homePage.build(context), set below from route
+      themeMode: ThemeMode.dark,
+      theme: ThemeData(primarySwatch: Colors.deepPurple),
+      darkTheme: ThemeData(primarySwatch: Colors.deepPurple),
+      initialRoute:
+          "/home", //opens initial route instead of specified routes below
+      routes: {
+        //routes like laravel
+        "/": (context) => LoginPage(),
+        "/home": (context) => HomePage(),
+        "/login": (context) => LoginPage(),
+      },
     );
   }
 }
