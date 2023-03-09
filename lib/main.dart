@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.dark,
       theme: ThemeData(
           primarySwatch: Colors.deepPurple,
-          fontFamily: GoogleFonts.lato(color: Colors.red)
+          fontFamily: GoogleFonts.lato()
               .fontFamily), //setting primary forn from google fonts
       initialRoute: "/", //opens initial route instead of specified routes below
       routes: {

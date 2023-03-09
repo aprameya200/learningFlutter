@@ -54,11 +54,12 @@ class LoginPage extends StatelessWidget {
           ),
           ElevatedButton(
             // to add button
-            style: ButtonStyle(
-              foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-              backgroundColor:
-                  MaterialStateProperty.all<Color>(Colors.deepPurple),
-            ),
+            //ButtonStyle not needed in elecvatred button
+            // style: ButtonStyle(
+            //     foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+            //     backgroundColor:
+            //         MaterialStateProperty.all<Color>(Colors.deepPurple),
+            //     ),
             onPressed: () {}, //method call
             child: Text('Submit'),
           ),
