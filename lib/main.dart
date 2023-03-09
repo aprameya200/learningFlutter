@@ -1,3 +1,4 @@
+import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:learningdart/pages/home_page.dart';
 import 'package:learningdart/pages/login_page.dart';
@@ -21,10 +22,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       //home: homePage.build(context), set below from route
       themeMode: ThemeMode.dark,
-      theme: ThemeData(primarySwatch: Colors.deepPurple),
-      darkTheme: ThemeData(primarySwatch: Colors.deepPurple),
-      initialRoute:
-          "/home", //opens initial route instead of specified routes below
+      theme: ThemeData(
+          primarySwatch: Colors.deepPurple,
+          fontFamily: GoogleFonts.lato(color: Colors.red)
+              .fontFamily), //setting primary forn from google fonts
+      initialRoute: "/", //opens initial route instead of specified routes below
       routes: {
         //routes like laravel
         "/": (context) => LoginPage(),
