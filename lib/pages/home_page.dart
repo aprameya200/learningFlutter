@@ -11,7 +11,7 @@ class HomePage extends StatelessWidget {
         body: Center(
             //main body of app
             child: Container(
-          child: Text("Welcome to flutter"),
+          child: Text("Welcome to home page of app"),
         )),
         drawer: Drawer()); //hamburger menu icon and feature
   }

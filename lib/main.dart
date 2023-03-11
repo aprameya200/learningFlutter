@@ -2,6 +2,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:learningdart/pages/home_page.dart';
 import 'package:learningdart/pages/login_page.dart';
+import 'package:learningdart/utils/routes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
     HomePage homePage = new HomePage();
 
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       //home: homePage.build(context), set below from route
       themeMode: ThemeMode.dark,
       theme: ThemeData(
@@ -30,8 +32,9 @@ class MyApp extends StatelessWidget {
       routes: {
         //routes like laravel
         "/": (context) => LoginPage(),
-        "/home": (context) => HomePage(),
-        "/login": (context) => LoginPage(),
+        MyRoutes.homeRoute: (context) =>
+            HomePage(), //routing using rpoute classes
+        MyRoutes.loginRoute: (context) => LoginPage(),
       },
     );
   }
