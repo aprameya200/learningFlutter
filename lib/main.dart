@@ -28,10 +28,10 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.deepPurple,
           fontFamily: GoogleFonts.lato()
               .fontFamily), //setting primary forn from google fonts
-      initialRoute: "/", //opens initial route instead of specified routes below
+      //initialRoute: "/", //opens initial route instead of specified routes below
       routes: {
         //routes like laravel
-        "/": (context) => LoginPage(),
+        "/": (context) => HomePage(),
         MyRoutes.homeRoute: (context) =>
             HomePage(), //routing using rpoute classes
         MyRoutes.loginRoute: (context) => LoginPage(),

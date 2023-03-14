@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:learningdart/widgets/drawer.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -13,6 +14,7 @@ class HomePage extends StatelessWidget {
             child: Container(
           child: Text("Welcome to home page of app"),
         )),
-        drawer: Drawer()); //hamburger menu icon and feature
+        drawer:
+            MyDrawer()); //hamburger menu icon and feature also it is custom class made by user
   }
 }
