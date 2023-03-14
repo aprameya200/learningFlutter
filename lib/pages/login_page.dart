@@ -24,113 +24,144 @@ class _LoginPageState extends State<LoginPage> {
   String name = "";
   bool changedButton = false;
 
+  final _formKey = GlobalKey<FormState>();
+
+  moveToHome(BuildContext context) async {
+    if (_formKey.currentState!.validate()) {
+      setState(() {
+        changedButton = true;
+      });
+
+      await Future.delayed(Duration(seconds: 1));
+      await Navigator.pushNamed(context, MyRoutes.homeRoute);
+
+      setState(() {
+        changedButton = false;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Material(
         color: Colors.white,
         child: SingleChildScrollView(
             //allows for scrool functionlity
-            child: Column(children: [
-          //inside this children list
-          Image.asset(
-            "assets/images/login_image.png",
-            fit: BoxFit.cover,
-          ),
-          // ignore: prefer_const_constructors
-          SizedBox(
-            height: 20.0,
-          ),
-          Text(
-            "Welcome $name",
-            style: TextStyle(
-                color: Colors.black, fontSize: 28, fontWeight: FontWeight.bold),
-//
-            // style: GoogleFonts.aladin(color: Colors.black, fontSize: 40),
-          ),
-          SizedBox(
-            height: 20.0,
-          ),
-          Padding(
-            padding:
-                const EdgeInsets.symmetric(vertical: 16.0, horizontal: 32.0),
-            child: Column(
-              children: [
-                TextFormField(
-                  decoration: InputDecoration(
-                    hintText: "Enter Username",
-                    labelText: "Username",
-                  ),
-                  onChanged: (value) {
-                    //run this function on change
-                    name = value;
-                    setState(() {});
-                  },
-                ),
-                TextFormField(
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    hintText: "Enter password",
-                    labelText: "Password",
-                  ),
-                ),
-              ],
+            child: Form(
+          key: _formKey,
+          child: Column(children: [
+            //inside this children list
+            Image.asset(
+              "assets/images/login_image.png",
+              fit: BoxFit.cover,
             ),
-          ),
-          SizedBox(
-            height: 40.0,
-          ),
-
-//option to wrap with gesture detector or inkWEll for click functionality or inkWEll
-          InkWell(
-            onTap: () async {
-              setState(() {
-                changedButton = true;
-              });
-
-              await Future.delayed(Duration(seconds: 1));
-              Navigator.pushNamed(context, MyRoutes.homeRoute);
-            },
-            child: AnimatedContainer(
-              width: changedButton ? 50 : 150,
-              height: 50,
-              decoration: BoxDecoration(
-                  // cannot use both color (of container and color of box decoration)
-                  color: Colors.deepPurple,
-                  // shape: changedButton ? BoxShape.circle : BoxShape.rectangle,
-                  borderRadius: BorderRadius.circular(changedButton ? 50 : 8)),
-              duration: Duration(seconds: 1),
-              child: Center(
-                //can use wrap with center
-                child: changedButton
-                    ? Icon(Icons.done, color: Colors.white) //if btn is clicked
-                    : Text(
-                        "Login",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18),
-                      ),
+            // ignore: prefer_const_constructors
+            SizedBox(
+              height: 20.0,
+            ),
+            Text(
+              "Welcome $name",
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 28,
+                  fontWeight: FontWeight.bold),
+              //
+              // style: GoogleFonts.aladin(color: Colors.black, fontSize: 40),
+            ),
+            SizedBox(
+              height: 20.0,
+            ),
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(vertical: 16.0, horizontal: 32.0),
+              child: Column(
+                children: [
+                  TextFormField(
+                    decoration: InputDecoration(
+                      hintText: "Enter Username",
+                      labelText: "Username",
+                    ),
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return "Username cannot be empty";
+                      }
+                    },
+                    onChanged: (value) {
+                      //run this function on change
+                      name = value;
+                      setState(() {});
+                    },
+                  ),
+                  TextFormField(
+                    obscureText: true,
+                    decoration: InputDecoration(
+                      hintText: "Enter password",
+                      labelText: "Password",
+                    ),
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return "Password cannot be empty";
+                      } else if (value.length < 6) {
+                        return "Password length is less than 6 characters";
+                      } else {
+                        return null;
+                      }
+                    },
+                  ),
+                ],
               ),
             ),
-          )
-          // ElevatedButton(
-          //   // to add button
-          //   //ButtonStyle not needed in elecvatred button
-          //   style: ButtonStyle(
-          //     foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-          //     backgroundColor:
-          //         MaterialStateProperty.all<Color>(Colors.deepPurple),
-          //     minimumSize: MaterialStateProperty.all<Size>(Size(150, 40)),
-          //   ),
-          //   onPressed: () {
-          //     Navigator.pushNamed(
-          //         context,
-          //         MyRoutes
-          //             .homeRoute); //goes to specified reoute while btn is pressed
-          //   }, //method call;
-          //   child: Text('Login', style: TextStyle(fontSize: 17.5)),
-          //   //style: TextButton.styleFrom(minimumSize: Size(150, 40)),
-          // ),
-        ])));
+            SizedBox(
+              height: 40.0,
+            ),
+
+            //option to wrap with gesture detector or inkWEll for click functionality or inkWEll
+            Material(
+              color: Colors.deepPurple,
+              // shape: changedButton ? BoxShape.circle : BoxShape.rectangle,
+              borderRadius: BorderRadius.circular(changedButton ? 50 : 8),
+              child: InkWell(
+                onTap: () => moveToHome(context),
+                child: AnimatedContainer(
+                  width: changedButton ? 50 : 150,
+                  height: 50,
+                  // cannot use both color (of container and color of box decoration)
+                  duration: Duration(seconds: 1),
+                  child: Center(
+                    //can use wrap with center
+                    child: changedButton
+                        ? Icon(Icons.done,
+                            color: Colors.white) //if btn is clicked
+                        : Text(
+                            "Login",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18),
+                          ),
+                  ),
+                ),
+              ),
+            )
+            // ElevatedButton(
+            //   // to add button
+            //   //ButtonStyle not needed in elecvatred button
+            //   style: ButtonStyle(
+            //     foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+            //     backgroundColor:
+            //         MaterialStateProperty.all<Color>(Colors.deepPurple),
+            //     minimumSize: MaterialStateProperty.all<Size>(Size(150, 40)),
+            //   ),
+            //   onPressed: () {
+            //     Navigator.pushNamed(
+            //         context,
+            //         MyRoutes
+            //             .homeRoute); //goes to specified reoute while btn is pressed
+            //   }, //method call;
+            //   child: Text('Login', style: TextStyle(fontSize: 17.5)),
+            //   //style: TextButton.styleFrom(minimumSize: Size(150, 40)),
+            // ),
+          ]),
+        )));
   }
 }
