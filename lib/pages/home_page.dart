@@ -7,7 +7,9 @@ class HomePage extends StatelessWidget {
     return Scaffold(
         //has head , body and footer
         appBar: AppBar(
-          title: Text("Catologue App"),
+          title: Text(
+            "Catolog App",
+          ),
         ),
         body: Center(
             //main body of app

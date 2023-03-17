@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:learningdart/pages/home_page.dart';
 import 'package:learningdart/pages/login_page.dart';
 import 'package:learningdart/utils/routes.dart';
+import 'package:learningdart/widgets/themes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,9 +26,11 @@ class MyApp extends StatelessWidget {
       //home: homePage.build(context), set below from route
       themeMode: ThemeMode.dark,
       theme: ThemeData(
-          primarySwatch: Colors.deepPurple,
-          fontFamily: GoogleFonts.lato()
-              .fontFamily), //setting primary forn from google fonts
+        primarySwatch: Colors.deepPurple,
+        fontFamily: GoogleFonts.lato().fontFamily,
+        appBarTheme: MyThemes()
+            .currentTheme(), //themse from anotehr class called using method of that class
+      ), //setting primary forn from google fonts
       //initialRoute: "/", //opens initial route instead of specified routes below
       routes: {
         //routes like laravel

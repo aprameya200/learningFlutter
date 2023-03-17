@@ -9,8 +9,10 @@ class MyDrawer extends StatelessWidget {
     final imageURL =
         "https://images.hitpaw.com/topics/video-tips/cute-anime-3.jpg";
 
+    Color? grey = Colors.grey[900];
+
     return Drawer(
-      backgroundColor: Colors.red,
+      backgroundColor: grey,
       child: ListView(
         //adding stuff into drawer
         children: [
@@ -20,7 +22,7 @@ class MyDrawer extends StatelessWidget {
               padding: EdgeInsets.zero,
               child: UserAccountsDrawerHeader(
                 margin: EdgeInsets.zero,
-                decoration: BoxDecoration(color: Colors.red),
+                decoration: BoxDecoration(color: grey),
                 currentAccountPicture:
                     CircleAvatar(backgroundImage: NetworkImage(imageURL)),
                 accountName: Text("Aprameya Neopane"),
