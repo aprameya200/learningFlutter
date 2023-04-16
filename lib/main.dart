@@ -31,10 +31,10 @@ class MyApp extends StatelessWidget {
         appBarTheme: MyThemes()
             .currentTheme(), //themse from anotehr class called using method of that class
       ), //setting primary forn from google fonts
-      //initialRoute: "/", //opens initial route instead of specified routes below
+      initialRoute: "/", //opens initial route instead of specified routes below
       routes: {
         //routes like laravel
-        "/": (context) => HomePage(),
+        "/": (context) => HomePage(), //route has been changes to this page
         MyRoutes.homeRoute: (context) =>
             HomePage(), //routing using rpoute classes
         MyRoutes.loginRoute: (context) => LoginPage(),

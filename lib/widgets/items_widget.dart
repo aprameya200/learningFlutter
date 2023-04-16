@@ -10,6 +10,9 @@ class ItemsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: ListTile(
+        onTap: () {
+          print("${items.name} pressed");
+        },
         contentPadding: EdgeInsets.all(20.0),
         leading: Image(image: NetworkImage(items.image)),
         subtitle: Text(items.desc),

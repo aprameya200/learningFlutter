@@ -13,7 +13,7 @@ class HomePage extends StatelessWidget {
         //has head , body and footer
         appBar: AppBar(
           title: Text(
-            "Catolog App",
+            "Home ",
           ),
         ), //returns the build method in item widget
         body: ListView.builder(
