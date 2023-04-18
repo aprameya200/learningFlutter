@@ -10,7 +10,10 @@ class MyThemes {
         titleTextStyle: TextStyle(
           color: Colors.black,
           fontSize: 20,
-          fontFamily: GoogleFonts.lato().fontFamily,
+          fontFamily: GoogleFonts.poppins().fontFamily,
         ));
   }
+
+  static Color cream = Color.fromARGB(255, 251, 246, 246);
+  static Color darkBlueish = Color.fromARGB(255, 50, 58, 99);
 }
